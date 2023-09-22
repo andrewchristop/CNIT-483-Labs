@@ -10,12 +10,11 @@ from sklearn.model_selection import train_test_split
 data=pd.read_csv('/Users/christopherandrew/Documents/CNIT 483/CNIT-483-Lab/Lab1_2.csv') # you may need to change the path
 x_data = data['x'].values
 y_data = data['y'].values
-
+x_squared = x_data ** 2;
+joined = np.stack((x_data, x_squared), axis = 1)
 # Generate training data (70% of the given data samples) and the testing data (30% of the given data samples). You can change to other percentage value as long as test_size <=0.3.
-x_train, x_test, y_train, y_test = train_test_split(x_data, y_data, test_size=0.3)
+x_train, x_test, y_train, y_test = train_test_split(joined, y_data, test_size=0.3)
 
-joined = np.stack((x_train, y_train), axis=1)
-joined_test = np.stack((x_test, y_test), axis=1)
 model = models.Sequential()
 model.add(layers.Normalization(input_shape=(2,), axis=None))
 model.add(layers.Dense(1))
@@ -27,12 +26,12 @@ model.compile(optimizer='adam',
               loss='mean_absolute_error',
               metrics=['mean_absolute_error'])
 
-history = model.fit(joined, y_train, epochs=3500,
-                    validation_data=(joined_test, y_test))
+history = model.fit(x_train, y_train, epochs=3500,
+                    validation_data=(x_test, y_test))
 W = model.layers[1].get_weights()
 print(W)
 
-test_loss, test_acc = model.evaluate(joined_test,  y_test, verbose=2)
-train_loss, train_acc = model.evaluate(joined, y_train, verbose=2)
+test_loss, test_acc = model.evaluate(x_test,  y_test, verbose=2)
+train_loss, train_acc = model.evaluate(x_train, y_train, verbose=2)
 print("Test_error: ", test_acc)
 print("Train_error: ", train_acc)
