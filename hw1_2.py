@@ -7,18 +7,19 @@ from tensorflow.keras import layers, models, optimizers
 from sklearn.metrics import mean_squared_error
 from sklearn.model_selection import train_test_split
 
-data = pd.read_csv('/Users/christopherandrew/Documents/CNIT 483/CNIT-483-Lab/Data_HW1_1.csv')
+data = pd.read_csv('/Users/christopherandrew/Documents/CNIT 483/CNIT-483-Lab/Data_HW1_2.csv')
 x_data = data['x'].values
 y_data = data['y'].values
 
 x_squared = x_data ** 2
+x_cubed = x_data ** 3
 
-joined = np.stack((x_data, x_squared), axis = 1)
+joined = np.stack((x_data, x_squared, x_cubed), axis = 1)
 
 x_train, x_test, y_train, y_test = train_test_split(joined, y_data, test_size=0.3)
 
 model = models.Sequential()
-model.add(layers.Normalization(input_shape=(2,), axis=None))
+model.add(layers.Normalization(input_shape=(3,), axis=None))
 model.add(layers.Dense(1))
 model.summary()
 
