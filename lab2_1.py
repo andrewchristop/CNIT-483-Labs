@@ -20,5 +20,8 @@ model = LogisticRegression()
 model.fit(x_train, y_train)
 y_pred = model.predict(x_test)
 
-cnf_matrix = metrics.confusion_matrix(y_test, y_pred)
+#cnf_matrix = metrics.confusion_matrix(y_test, y_pred)
 print(classification_report(y_test, y_pred))
+
+print("Test_error: ", 1 - model.score(x_test, y_test))
+print("Train_error: ", 1 - model.score(x_train, y_train))
