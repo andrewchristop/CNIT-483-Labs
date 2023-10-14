@@ -32,6 +32,6 @@ history = model.fit(x_train, y_train, epochs=300,
                     validation_data=(x_test, y_test))
 test_loss, test_acc = model.evaluate(x_test,  y_test, verbose=2)
 train_loss, train_acc = model.evaluate(x_train, y_train, verbose=2)
-print("Test_error: ", test_acc)
-print("Train_error: ", train_acc)
+print("Test_error: ", test_loss)
+print("Train_error: ", train_loss)
 
