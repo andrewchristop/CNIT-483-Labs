@@ -11,19 +11,20 @@ from sklearn.metrics import mean_squared_error
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
 
-(x_train, y_train), (x_test, y_test) = mnist.load_data()
-x_data = np.concatenate((x_train, x_test))
-y_data = np.concatenate((y_train, y_test))
+(x_train, y_train), (x_test, y_test) = mnist.load_data() #Loads the MNIST data set
+x_data = np.concatenate((x_train, x_test)) #Temporary concatenation to prepare for train_test_split() 
+y_data = np.concatenate((y_train, y_test)) #Temporary concatenation to prepare for train_test_split()
 
-x_train, x_test, y_train, y_test = train_test_split(x_data, y_data, train_size = 0.7)
+x_train, x_test, y_train, y_test = train_test_split(x_data, y_data, train_size = 0.7) #Designates 70% of the dataset as
+training data
 
 #x_train = x_train / 255.0
 #x_test = x_test / 255.0
 
 model = models.Sequential()
-model.add(layers.Flatten(input_shape=(28,28))) #Designates input variable to have 2 dimensions
+model.add(layers.Flatten(input_shape=(28,28))) #Flatten the input images to 28 by 28 to prepare them for FCNN processing
 model.add(layers.Dense(10, activation='relu')) #First layer has 10 computing nodes and uses the relu function
-model.add(layers.Dense(20, activation='softmax')) #Second layer has 20 computing node and uses the sigmoid function
+model.add(layers.Dense(20, activation='softmax')) #Second layer has 20 computing node and uses the softmax function
 model.summary()
 adam = optimizers.Adam(learning_rate=0.3) #Implements the adam optimizer with a learning rate of 0.3
 
