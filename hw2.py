@@ -15,8 +15,7 @@ from sklearn.linear_model import LogisticRegression
 x_data = np.concatenate((x_train, x_test)) #Temporary concatenation to prepare for train_test_split() 
 y_data = np.concatenate((y_train, y_test)) #Temporary concatenation to prepare for train_test_split()
 
-x_train, x_test, y_train, y_test = train_test_split(x_data, y_data, train_size = 0.7) #Designates 70% of the dataset as
-training data
+x_train, x_test, y_train, y_test = train_test_split(x_data, y_data, train_size = 0.7) #Training data is 70% of total set
 
 #x_train = x_train / 255.0
 #x_test = x_test / 255.0
