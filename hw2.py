@@ -1,15 +1,10 @@
 import tensorflow as tf
 import pandas as pd
 import numpy as np
-import matplotlib
-import matplotlib.pyplot as plt
 from keras.datasets import mnist
 from tensorflow.keras import layers, models, optimizers
 from sklearn import metrics
-from sklearn.metrics import classification_report
-from sklearn.metrics import mean_squared_error
 from sklearn.model_selection import train_test_split
-from sklearn.linear_model import LogisticRegression
 
 (x_train, y_train), (x_test, y_test) = mnist.load_data() #Loads the MNIST data set
 x_data = np.concatenate((x_train, x_test)) #Temporary concatenation to prepare for train_test_split() 
