@@ -12,8 +12,9 @@ y_data = np.concatenate((y_train, y_test)) #Temporary concatenation to prepare f
 
 x_train, x_test, y_train, y_test = train_test_split(x_data, y_data, train_size = 0.7) #Training data is 70% of total set
 
-#x_train = x_train / 255.0
-#x_test = x_test / 255.0
+#Typical RGB representation is from 0-255 where the values are represented as integers
+x_train = x_train / 255.0 #Changes pixel intensity values between 0 and 1 (decimal form)
+x_test = x_test / 255.0 #Changes pixel intensity values between 0 and 1 (decimal form)
 
 model = models.Sequential()
 model.add(layers.Flatten(input_shape=(28,28))) #Flatten the input images to 28 by 28 to prepare them for FCNN processing
