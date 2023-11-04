@@ -8,14 +8,14 @@ from sklearn.model_selection import train_test_split
 def cnn():
   model = models.Sequential()
   model.add(layers.Conv2D(25, (3, 3), activation='relu', padding='same', input_shape=(28, 28, 1)))
-  model.add(layers.Conv2D(25, (3, 3), activation='relu', padding='same', input_shape=(28, 28, 1)))
+  model.add(layers.MaxPooling2D(1, strides = 1, padding = 'same'))
   model.add(layers.Conv2D(25, (3, 3), activation='relu', padding='same', input_shape=(28, 28, 1)))
   model.add(layers.MaxPooling2D(1, strides = 1, padding = 'same'))
-  model.add(layers.MaxPooling2D(1, strides = 1, padding = 'same'))
+  model.add(layers.Conv2D(25, (3, 3), activation='relu', padding='same', input_shape=(28, 28, 1)))
   model.add(layers.MaxPooling2D(1, strides = 1, padding = 'same'))
   model.add(layers.Flatten())
   model.add(layers.Dense(10, activation='relu')) 
-  model.add(layers.Dense(20, activation='softmax'))
+  model.add(layers.Dense(10, activation='softmax'))
   model.summary()
 
   model.compile(optimizer='adam',
@@ -34,7 +34,7 @@ def fcnn():
   model = models.Sequential()
   model.add(layers.Flatten(input_shape=(28,28,1))) 
   model.add(layers.Dense(10, activation='relu')) 
-  model.add(layers.Dense(20, activation='softmax')) 
+  model.add(layers.Dense(10, activation='softmax')) 
   model.summary()
   adam = optimizers.Adam(learning_rate=0.3) 
   
