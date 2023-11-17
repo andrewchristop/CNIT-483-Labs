@@ -9,8 +9,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
-x_train = pd.read_csv('/home/cbudihar/CNIT-483-Labs/Data_Lab4_1_train.csv')
-x_test = pd.read_csv('/home/cbudihar/CNIT-483-Labs/Data_Lab4_1_test.csv')
+x_train = pd.read_csv('/Users/christopherandrew/Documents/CNIT 483/CNIT-483-Lab/Data_Lab4_1_train.csv')
+x_test = pd.read_csv('/Users/christopherandrew/Documents/CNIT 483/CNIT-483-Lab/Data_Lab4_1_test.csv')
 
 
 
