@@ -21,11 +21,12 @@ for i in range(0,5):
 
 y_train = train['y_train'].values
 
-for i in range (0, 5):
-  temp_te = test['x_test_' + str(i)].values
+for j in range (0, 5):
+  temp_te = test['x_test_' + str(j)].values
   x_test = np.concatenate((x_test, temp_te))
 
-print(x_test)
+y_test = test['y_test'].values
+print(y_test)
 
 #data = np.concatenate((train, test), axis = 0)
 #print(data)
